@@ -5,14 +5,14 @@ ctrlUsuario.crearUsuario = async (req, res) => {
     const {
         nombre,
         correo,
-        password,
+        contraseña,
     } = req.body;
 
     try {
         const nuevoUsuario = await Usuario.create({
             nombre,
             correo,
-            password,
+            contraseña,
         })
 
         return res.status(201).json({ message: 'Usuario creado con éxito', nuevoUsuario })

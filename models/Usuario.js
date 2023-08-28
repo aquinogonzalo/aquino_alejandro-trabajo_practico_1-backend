@@ -44,7 +44,7 @@ const Usuario = sequelize.define('Usuario', {
 
 
 //Esto hay que cambiar de false a true, si es que queremos crear la tabla si es que no habia creado.
-Usuario.sync({ force: true }).then(() => {
+Usuario.sync({ force: false }).then(() => {
     console.log('Hey, la tabla usuarios se ha creado!');
 });
 
