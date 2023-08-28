@@ -9,7 +9,7 @@ const {
     eliminarPost
 } = require('../controllers/Post.controllers');
 
-//Routes CRUD
+//Routes CRUD Post
 
 // Crear un post
 router.post('/api/post', crearPost);
