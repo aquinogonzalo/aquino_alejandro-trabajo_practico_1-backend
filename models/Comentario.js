@@ -1,23 +1,16 @@
 //Importamos sequelize y DataTypes
 const { DataTypes, sequelize } = require('../database');
+const Post = require('./Post');
 
-//Modelo de Usuario
-const Usuario = sequelize.define('usuario', {
-    id: {
+//Modelo de Comentario
+const Comentario = sequelize.define('Comentario', {
+    id_comentario: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
     },
-    nombre: {
-        type: DataTypes.STRING,
-        allowNull: false,
-    },
-    correo: {
-        type: DataTypes.STRING,
-        allowNull: false,
-    },
-    contraseña: {
-        type: DataTypes.STRING,
+    contenido: {
+        type: DataTypes.TEXT,
         allowNull: false,
     },
     createdAt: {
@@ -38,13 +31,18 @@ const Usuario = sequelize.define('usuario', {
     createdAt: true,
     updatedAt: true,
     deletedAt: true,
-    tableName: 'usuarios'
+    tableName: 'comentarios'
 }
 );
+
+Comentario.belongsTo(Post, {
+    foreignKey: 'id_post',
+});
+
 //Esto hay que cambiar de false a true, si es que queremos crear la tabla si es que no habia creado.
-Usuario.sync({ force: false }).then(() => {
-    console.log('Hey, la tabla usuarios se ha creado!');
+Comentario.sync({ force: false }).then(() => {
+    console.log('Hey, la tabla comentarios se ha creado!');
 });
 
 
-module.exports = Usuario;
+module.exports = Comentario;

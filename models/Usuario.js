@@ -1,19 +1,23 @@
 //Importamos sequelize y DataTypes
 const { DataTypes, sequelize } = require('../database');
 
-//Modelo de Post
-const Post = sequelize.define('post', {
-    id: {
+//Modelo de Usuario
+const Usuario = sequelize.define('Usuario', {
+    id_usuario: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
     },
-    título: {
+    nombre: {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    contenido: {
-        type: DataTypes.TEXT,
+    correo: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    contraseña: {
+        type: DataTypes.STRING,
         allowNull: false,
     },
     createdAt: {
@@ -34,13 +38,15 @@ const Post = sequelize.define('post', {
     createdAt: true,
     updatedAt: true,
     deletedAt: true,
-    tableName: 'posts'
-}
-);
-//Esto hay que cambiar de false a true, si es que queremos crear la tabla si es que no habia creado.
-Post.sync({ force: false }).then(() => {
-    console.log('Hey, la tabla posts se ha creado!');
+    tableName: 'usuarios'
 });
 
 
-module.exports = Post;
+
+//Esto hay que cambiar de false a true, si es que queremos crear la tabla si es que no habia creado.
+Usuario.sync({ force: true }).then(() => {
+    console.log('Hey, la tabla usuarios se ha creado!');
+});
+
+
+module.exports = Usuario
