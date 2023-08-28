@@ -1,6 +1,5 @@
 //Importamos sequelize y DataTypes
 const { DataTypes, sequelize } = require('../database');
-const Usuario = require('./Usuario')
 
 //Modelo de Post
 const Post = sequelize.define('Post', {
@@ -16,6 +15,10 @@ const Post = sequelize.define('Post', {
     contenido: {
         type: DataTypes.TEXT,
         allowNull: false,
+    },
+    id_usuario: {
+        type: DataTypes.INTEGER,
+        allowNull: false
     },
     createdAt: {
         type: DataTypes.DATE,
@@ -40,9 +43,6 @@ const Post = sequelize.define('Post', {
 );
 
 
-Post.belongsTo(Usuario, {
-    foreignKey: 'id_usuario'
-});
 
 
 

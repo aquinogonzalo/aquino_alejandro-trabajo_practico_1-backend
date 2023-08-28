@@ -12,8 +12,9 @@ const sequelize = new Sequelize(
 
 const conexionDB = async () => {
     try {
-        await sequelize.authenticate();
+        await sequelize.sync({ force: false });
         console.log('Se conectó la base de datos');
+        require('./models/associations').associations()
     } catch (error) {
         console.log('Lamentablemente no se pudo conectar la base de datos: ', error);
     }

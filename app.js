@@ -1,8 +1,11 @@
 // Importaciones 
 const express = require('express');
 require('dotenv').config();
-const routerUsuario = require('./routes/Usuario.routes');
 
+//Enrutadores
+const routerUsuario = require('./routes/Usuario.routes');
+const routerPost = require('./routes/Post.routes')
+const routerComentario = require('./routes/Comentario.routes')
 
 // Configuracion de la aplicación.
 const app = express();
@@ -11,13 +14,16 @@ const port = process.env.PORT || 3000;
 // Middlewares
 app.use(express.json());
 
-
 // Se conecta la Base de Datos
 const { conexionDB } = require('./database');
 
 conexionDB()
 
+//Rutas
 app.use(routerUsuario);
+app.use(routerPost);
+app.use(routerComentario);
+
 
 //Listen port
 app.listen(port, () => {
