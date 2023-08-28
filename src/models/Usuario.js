@@ -47,4 +47,4 @@ Usuario.sync({ force: false }).then(() => {
 });
 
 
-module.exports = Usuario
+module.exports = Usuario;

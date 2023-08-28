@@ -1,16 +1,12 @@
 //Importamos sequelize y DataTypes
 const { DataTypes, sequelize } = require('../database');
 
-//Modelo de Post
-const Post = sequelize.define('post', {
+//Modelo de Comentario
+const Comentario = sequelize.define('comentario', {
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
-    },
-    título: {
-        type: DataTypes.STRING,
-        allowNull: false,
     },
     contenido: {
         type: DataTypes.TEXT,
@@ -34,13 +30,13 @@ const Post = sequelize.define('post', {
     createdAt: true,
     updatedAt: true,
     deletedAt: true,
-    tableName: 'posts'
+    tableName: 'comentarios'
 }
 );
 //Esto hay que cambiar de false a true, si es que queremos crear la tabla si es que no habia creado.
-Post.sync({ force: false }).then(() => {
-    console.log('Hey, la tabla posts se ha creado!');
+Comentario.sync({ force: false }).then(() => {
+    console.log('Hey, la tabla comentarios se ha creado!');
 });
 
 
-module.exports = Post;
+module.exports = Comentario;
